@@ -93,7 +93,8 @@ body {
     pointer-events: auto;
     display: flex;
     align-items: center;
-    gap: 40px;
+    justify-content: center;
+    gap: 0;
 }
 
 
@@ -108,9 +109,10 @@ body {
 /* TARJETA */
 .info-card {
     background: linear-gradient(145deg, #8898c4, #7583de);
-    padding: 70px;
-    width: 320px;
+    padding: 60px;
+    width: 420px;  
     border-radius: 20px;
+    margin-left: 60px; 
     transform: translateX(60px);
     opacity: 0;
     transition: all 0.5s ease;
@@ -220,3 +222,29 @@ body {
     background: rgba(255,255,255,0.2);
 }
 
+.menu-container {
+    position: relative;
+    text-align: center;
+}
+
+.side-logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    opacity: 0.15; /* efecto que se asomen */
+    transition: 0.5s;
+}
+
+.left-logo {
+    left: -120px;
+}
+
+.right-logo {
+    right: -120px;
+}
+
+.side-logo:hover {
+    opacity: 0.3;
+    transform: translateY(-50%) scale(1.05);
+}
