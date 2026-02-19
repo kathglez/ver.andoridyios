@@ -154,6 +154,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: visible;
 }
 
 .menu-container {
@@ -231,20 +232,16 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 220px;
-    opacity: 0.15; /* efecto que se asomen */
+    width: 250px;
+    opacity: 0.2;
     transition: 0.5s;
+    z-index: -1;
 }
 
 .left-logo {
-    left: -120px;
+    left: -80px; 
 }
 
 .right-logo {
-    right: -120px;
-}
-
-.side-logo:hover {
-    opacity: 0.3;
-    transform: translateY(-50%) scale(1.05);
+    right: -80px; 
 }
