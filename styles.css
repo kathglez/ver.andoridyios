@@ -87,21 +87,18 @@ body {
     justify-content: center;
 }
 
-/* Slide izquierda */
 .slide.left {
-    transform: translate(-750px, -50%) scale(0.8);
+    transform: translate(-450px, -50%) scale(0.8);
     opacity: 0.4;
     filter: blur(6px);
 }
 
-/* Slide derecha */
 .slide.right {
-    transform: translate(250px, -50%) scale(0.8);
+    transform: translate(450px, -50%) scale(0.8);
     opacity: 0.4;
     filter: blur(6px);
 }
 
-/* Slide activo */
 .slide.active {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
@@ -143,7 +140,6 @@ body {
 .arrow {
     position: absolute;
     font-size: 50px;
-    cursor: pointer;
     user-select: none;
     transition: 0.3s;
     z-index: 10;
