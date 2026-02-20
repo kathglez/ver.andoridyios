@@ -1,199 +1,14 @@
-/* BODY */
+/* RESET */
 body {
+    margin: 0;
     background: linear-gradient(135deg, #d1d1d1, #ffffff);
     font-family: 'Segoe UI', sans-serif;
     color: white;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     overflow: hidden;
 }
 
-/* TOP BAR */
-.top-bar {
-    width: 100%;
-    padding: 25px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
+/* ================= HEADER ================= */
 
-.top-bar h1 {
-    font-size: 40px;
-    letter-spacing: 2px;
-}
-
-.back-btn {
-    position: absolute;
-    left: 50px;
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    padding: 8px 15px;
-    border-radius: 25px;
-    transition: 0.3s;
-}
-
-.back-btn:hover {
-    background: #083d7e;
-}
-
-/* CARRUSEL */
-.carousel-wrapper {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    justify-content: center; /* centro horizontal */
-    align-items: center;     /* centro vertical */
-    position: relative;
-    margin-top: 120px;       /* separa del header */
-    min-height: 400px;       /* altura suficiente para slides y tarjetas */
-    overflow: hidden;        /* corta slides que salen */
-}
-
-.carousel {
-    position: relative;        /* referencia para slides absolutas */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;        /* ancho máximo del carrusel */
-    height: 100%;
-    transition: transform 0.7s cubic-bezier(.22,1,.36,1);
-}
-
-/* SLIDES */
-.slide {
-    position: absolute;        /* necesario para efecto hover */
-    transition: all 0.7s cubic-bezier(.22,1,.36,1);
-    opacity: 0;
-    filter: blur(8px);
-    transform: scale(0.7);
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-}
-
-.slide.left {
-    transform: translateX(-350px) scale(0.8);
-    opacity: 0.4;
-    filter: blur(6px);
-}
-
-.slide.right {
-    transform: translateX(350px) scale(0.8);
-    opacity: 0.4;
-    filter: blur(6px);
-}
-
-.slide.active {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-    filter: none;
-    pointer-events: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-}
-
-/* IMAGEN SLIDE */
-.slide img {
-    width: 240px;
-    height: 340px;
-    border-radius: 20px;
-    object-fit: cover;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-
-/* TARJETA INFO */
-.info-card {
-    background: linear-gradient(145deg, #8898c4, #7583de);
-    padding: 60px;
-    width: 420px;  
-    border-radius: 20px;
-    margin-left: 60px;        /* empieza “fuera” de la imagen */
-    transform: translateX(60px);
-    opacity: 0;
-    transition: all 0.5s ease;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-}
-
-.slide.active:hover .info-card {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-/* FLECHAS */
-.arrow {
-    position: absolute;
-    font-size: 50px;
-    cursor: pointer;
-    user-select: none;
-    transition: 0.3s;
-}
-
-.arrow:hover {
-    transform: scale(1.2);
-    color: #083d7e;
-}
-
-.arrow.left {
-    left: 80px;
-}
-
-.arrow.right {
-    right: 80px;
-}
-
-/* MENU */
-.menu-body {
-    background: linear-gradient(135deg, #ffffff, #bfbfc0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: visible;
-}
-
-.menu-container {
-    position: relative;
-    text-align: center;
-}
-
-.menu-container h1 {
-    font-size: 40px;
-    margin-bottom: 40px;
-    letter-spacing: 3px;
-}
-
-.menu-buttons {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-}
-
-.menu-btn {
-    padding: 20px 60px;
-    font-size: 20px;
-    border-radius: 40px;
-    text-decoration: none;
-    color: white;
-    background: linear-gradient(145deg, #586bf9, #083d7e);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-    transition: all 0.4s ease;
-}
-
-.menu-btn:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.7);
-}
-
-/* HEADER */
 .header-bar {
     position: fixed;
     top: 0;
@@ -228,15 +43,179 @@ body {
     background: rgba(255,255,255,0.2);
 }
 
-/* LOGOS LATERALES */
-.side-logo {
+/* ================= CARRUSEL ================= */
+
+.carousel-wrapper {
+    position: absolute;
+    top: 80px; /* espacio exacto debajo del header */
     left: 0;
-    right: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 500px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ================= SLIDES ================= */
+
+.slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    transition: all 0.7s cubic-bezier(.22,1,.36,1);
+    opacity: 0;
+    filter: blur(8px);
+    pointer-events: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Slide izquierda */
+.slide.left {
+    transform: translate(-750px, -50%) scale(0.8);
+    opacity: 0.4;
+    filter: blur(6px);
+}
+
+/* Slide derecha */
+.slide.right {
+    transform: translate(250px, -50%) scale(0.8);
+    opacity: 0.4;
+    filter: blur(6px);
+}
+
+/* Slide activo */
+.slide.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    filter: none;
+    pointer-events: auto;
+}
+
+/* ================= IMAGEN ================= */
+
+.slide img {
+    width: 240px;
+    height: 340px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* ================= TARJETA INFO ================= */
+
+.info-card {
+    background: linear-gradient(145deg, #8898c4, #7583de);
+    padding: 60px;
+    width: 420px;
+    border-radius: 20px;
+    margin-left: 60px;
+    transform: translateX(60px);
+    opacity: 0;
+    transition: all 0.5s ease;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+}
+
+.slide.active:hover .info-card {
+    transform: translateX(0);
     opacity: 1;
 }
 
+/* ================= FLECHAS ================= */
+
+.arrow {
+    position: absolute;
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.arrow:hover {
+    transform: scale(1.2);
+    color: #083d7e;
+}
+
+.arrow.left {
+    left: 80px;
+}
+
+.arrow.right {
+    right: 80px;
+}
+
+/* ================= MENU ================= */
+
+.menu-body {
+    background: linear-gradient(135deg, #ffffff, #bfbfc0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.menu-container {
+    position: relative;
+    text-align: center;
+}
+
+.menu-container h1 {
+    font-size: 40px;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+    color: #083d7e;
+}
+
+.menu-buttons {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.menu-btn {
+    padding: 20px 60px;
+    font-size: 20px;
+    border-radius: 40px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(145deg, #586bf9, #083d7e);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    transition: all 0.4s ease;
+}
+
+.menu-btn:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+}
+
+/* ================= LOGOS ================= */
+
+.side-logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .left-logo {
-    left: -80px;  
+    left: -80px;
 }
 
 .right-logo {
