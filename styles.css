@@ -50,34 +50,34 @@ body {
 .carousel-wrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; 
     position: relative;
-    margin-top: 100px;
+    margin-top: 120px;
+    overflow: hidden; 
 }
-
 .carousel {
-    position: relative;
-    width: 100%;          
-    max-width: 1200px;    
-    height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* ancho máximo para pantallas grandes */
+    height: 400px;
 }
 
 /* SLIDES */
 .slide {
-    position: relative;       
-    transition: all 0.7s cubic-bezier(.22,1,.36,1);
-    opacity: 0;
-    transform: scale(0.7);
-    pointer-events: none;
+    position: relative;  /* antes era absolute */
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 40px; /* espacio entre imagen y tarjeta */
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all 0.7s cubic-bezier(.22,1,.36,1);
+    pointer-events: none;
 }
+
 .slide.left {
     transform: translateX(-250px) scale(0.8);
     opacity: 0.4;
@@ -93,8 +93,8 @@ body {
 .slide.active {
     transform: translateX(0) scale(1);
     opacity: 1;
-    pointer-events: auto;
     filter: none;
+    pointer-events: auto;
 }
 
 .slide img {
